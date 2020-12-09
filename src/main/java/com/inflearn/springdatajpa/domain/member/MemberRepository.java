@@ -1,4 +1,4 @@
-package com.inflearn.springdatajpa.domain;
+package com.inflearn.springdatajpa.domain.member;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

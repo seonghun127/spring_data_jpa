@@ -1,4 +1,4 @@
-package com.inflearn.springdatajpa.domain;
+package com.inflearn.springdatajpa.domain.member;
 
 
 import org.junit.jupiter.api.Test;
