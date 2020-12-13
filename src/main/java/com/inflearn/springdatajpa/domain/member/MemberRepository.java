@@ -2,14 +2,16 @@ package com.inflearn.springdatajpa.domain.member;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberRepository {
 
-    @PersistenceContext
-    private EntityManager em;
+    private final EntityManager em;
+
+    public MemberRepository(EntityManager em) {
+        this.em = em;
+    }
 
     public Long save(Member member) {
         em.persist(member);
