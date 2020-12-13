@@ -1,8 +1,8 @@
 package com.inflearn.springdatajpa.domain.delivery;
 
+import com.inflearn.springdatajpa.domain.common.vo.Address;
 import com.inflearn.springdatajpa.domain.order.Order;
-import com.inflearn.springdatajpa.domain.vo.Address;
-import com.inflearn.springdatajpa.domain.vo.DeliveryStatus;
+import com.inflearn.springdatajpa.domain.delivery.vo.DeliveryStatus;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;

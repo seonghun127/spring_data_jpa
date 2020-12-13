@@ -2,7 +2,7 @@ package com.inflearn.springdatajpa.domain.order;
 
 import com.inflearn.springdatajpa.domain.delivery.Delivery;
 import com.inflearn.springdatajpa.domain.member.Member;
-import com.inflearn.springdatajpa.domain.vo.OrderStatus;
+import com.inflearn.springdatajpa.domain.order.vo.OrderStatus;
 import com.inflearn.springdatajpa.orderitem.OrderItem;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

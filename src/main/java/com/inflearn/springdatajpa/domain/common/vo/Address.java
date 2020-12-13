@@ -1,4 +1,4 @@
-package com.inflearn.springdatajpa.domain.vo;
+package com.inflearn.springdatajpa.domain.common.vo;
 
 import javax.persistence.Embeddable;
 import lombok.Getter;

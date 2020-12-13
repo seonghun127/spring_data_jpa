@@ -1,7 +1,7 @@
 package com.inflearn.springdatajpa.domain.member;
 
+import com.inflearn.springdatajpa.domain.common.vo.Address;
 import com.inflearn.springdatajpa.domain.order.Order;
-import com.inflearn.springdatajpa.domain.vo.Address;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
