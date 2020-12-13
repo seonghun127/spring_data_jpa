@@ -1,42 +1,36 @@
-package com.inflearn.springdatajpa.domain.member;
+package com.inflearn.springdatajpa.domain.delivery;
 
 import com.inflearn.springdatajpa.domain.order.Order;
 import com.inflearn.springdatajpa.domain.vo.Address;
-import java.util.ArrayList;
-import java.util.List;
+import com.inflearn.springdatajpa.domain.vo.DeliveryStatus;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import lombok.Builder;
+import javax.persistence.OneToOne;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-public class Member {
+public class Delivery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_id")
+    @Column(name = "delivery_id")
     private Long id;
 
-    private String username;
+    @OneToOne(mappedBy = "delivery")
+    private Order order;
 
     @Embedded
     private Address address;
 
-    @OneToMany(mappedBy = "member")
-    private List<Order> orders = new ArrayList<>();
-
-    @Builder
-    public Member(String username) {
-        this.username = username;
-    }
+    @Enumerated(EnumType.STRING)
+    private DeliveryStatus status;
 }
