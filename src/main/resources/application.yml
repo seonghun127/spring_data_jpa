@@ -12,6 +12,8 @@ spring:
       hibernate:
 #        show-sql: true
         format_sql: true
+        jdbc:
+          batch_size: 10
 
 logging:
   level:
