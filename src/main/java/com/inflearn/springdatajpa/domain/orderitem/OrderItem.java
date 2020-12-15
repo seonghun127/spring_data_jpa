@@ -1,4 +1,4 @@
-package com.inflearn.springdatajpa.orderitem;
+package com.inflearn.springdatajpa.domain.orderitem;
 
 import com.inflearn.springdatajpa.domain.item.Item;
 import com.inflearn.springdatajpa.domain.order.Order;
