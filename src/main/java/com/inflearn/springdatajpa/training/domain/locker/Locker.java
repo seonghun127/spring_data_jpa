@@ -21,7 +21,7 @@ public class Locker {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @OneToOne(fetch = FetchType.LAZY)
+    //    @OneToOne(fetch = FetchType.LAZY)
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "MEMBER_TEST_ID", unique = true)
     private MemberTest memberTest;

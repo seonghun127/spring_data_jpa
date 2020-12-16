@@ -1,6 +1,5 @@
 package com.inflearn.springdatajpa.training.domain.team;
 
-import com.inflearn.springdatajpa.domain.member.Member;
 import com.inflearn.springdatajpa.training.domain.member.MemberTest;
 import java.util.ArrayList;
 import java.util.List;
