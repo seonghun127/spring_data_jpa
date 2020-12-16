@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
+@Transactional
 class MemberServiceTest {
 
     @Autowired
@@ -19,15 +20,18 @@ class MemberServiceTest {
     @Autowired
     private MemberRepository memberRepository;
 
-    @Transactional
     @Test
     void 회원가입() {
         // given
         Member member = new Member();
         member.setUsername("kim");
 
+        Member member2 = new Member();
+        member2.setUsername("lee");
+
         // when
         Long savedId = memberService.join(member);
+        memberService.join(member2);
 
         // then
         assertThat(member).isEqualTo(memberRepository.findOne(savedId));

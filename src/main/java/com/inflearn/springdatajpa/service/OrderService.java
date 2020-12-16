@@ -7,7 +7,9 @@ import com.inflearn.springdatajpa.domain.member.Member;
 import com.inflearn.springdatajpa.domain.member.MemberRepository;
 import com.inflearn.springdatajpa.domain.order.Order;
 import com.inflearn.springdatajpa.domain.order.OrderRepository;
+import com.inflearn.springdatajpa.domain.order.dto.OrderSearch;
 import com.inflearn.springdatajpa.domain.orderitem.OrderItem;
+import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,5 +47,9 @@ public class OrderService {
     public void cancelOrder(Long orderId) {
         Order order = orderRepository.findOne(orderId);
         order.cancel();
+    }
+
+    public List<Order> findAll(OrderSearch orderSearch) {
+        return orderRepository.findAll(orderSearch);
     }
 }
