@@ -1,6 +1,7 @@
 package com.inflearn.springdatajpa.training.domain.locker;
 
 import com.inflearn.springdatajpa.training.domain.member.MemberTest;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,8 +22,8 @@ public class Locker {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //    @OneToOne(fetch = FetchType.LAZY)
-    @OneToOne(fetch = FetchType.EAGER)
+//        @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "MEMBER_TEST_ID", unique = true)
     private MemberTest memberTest;
 

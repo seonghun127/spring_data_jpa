@@ -2,6 +2,7 @@ package com.inflearn.springdatajpa.training.domain.member;
 
 import com.inflearn.springdatajpa.training.domain.locker.Locker;
 import com.inflearn.springdatajpa.training.domain.team.Team;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,12 +27,12 @@ public class MemberTest {
     private Long id;
     private String username;
 
-    @OneToOne(mappedBy = "memberTest", fetch = FetchType.LAZY)
-//    @OneToOne(mappedBy = "memberTest", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "memberTest", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @OneToOne(mappedBy = "memberTest", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Locker locker;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-//    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
@@ -41,8 +42,17 @@ public class MemberTest {
         this.locker = locker;
     }
 
+    @Builder
+    public MemberTest(Locker locker) {
+        this.locker = locker;
+    }
+
+    public MemberTest(Team team) {
+        this.team = team;
+    }
+
     public void joinTeam(Team team) {
         this.team = team;
-        team.getMemberTests().add(this);
+//        team.getMemberTests().add(this);
     }
 }
