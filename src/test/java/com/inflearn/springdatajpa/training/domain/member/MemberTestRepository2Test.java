@@ -28,9 +28,9 @@ class MemberTestRepository2Test {
         List<MemberTest> members = memberTestRepository.findByIdIn(Arrays.asList(save.getId(), save2.getId()));
 
         // then
-        for (MemberTest member : members) {
-            System.out.println(member.getLocker());
-        }
+//        for (MemberTest member : members) {
+//            System.out.println(member.getLocker());
+//        }
     }
 
     @Test

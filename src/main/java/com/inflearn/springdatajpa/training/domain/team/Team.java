@@ -3,6 +3,7 @@ package com.inflearn.springdatajpa.training.domain.team;
 import com.inflearn.springdatajpa.training.domain.member.MemberTest;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,9 +30,9 @@ public class Team {
     @Column(name = "TEAM_NAME")
     private String name;
 
-//    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
-//    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
-//    private List<MemberTest> memberTests = new ArrayList<>();
+//    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<MemberTest> memberTests = new ArrayList<>();
 
     @Builder
     public Team(String name) {
