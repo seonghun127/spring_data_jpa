@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
 
 @Table(name = "MEMBER_TEST")
 @Entity

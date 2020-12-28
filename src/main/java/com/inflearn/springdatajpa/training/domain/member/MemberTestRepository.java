@@ -19,7 +19,7 @@ public class MemberTestRepository {
         return em.find(MemberTest.class, id);
     }
 
-    public MemberTest findWithJpql(Long id) {
+    public MemberTest findById(Long id) {
         return em.createQuery("select m from MemberTest m where m.id=:id", MemberTest.class)
                 .setParameter("id", id)
                 .getSingleResult();

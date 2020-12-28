@@ -49,7 +49,7 @@ public class MemberTestFacadeService {
 
     public MemberTest findMember(Long id) {
 //        return memberRepository.find(id);
-        return memberTestRepository.findWithJpql(id);
+        return memberTestRepository.findById(id);
     }
 
     public Locker findLocker(Long id) {
@@ -61,6 +61,6 @@ public class MemberTestFacadeService {
 //        Team team = teamRepository.find(id);
 //        log.info("the size of team.members is {}", team.getMembers().size());
 //        return team;
-        return teamRepository.findWithJpql(id);
+        return teamRepository.findById(id);
     }
 }
