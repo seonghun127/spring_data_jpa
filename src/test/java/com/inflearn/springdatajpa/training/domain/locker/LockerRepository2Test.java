@@ -1,13 +1,10 @@
 package com.inflearn.springdatajpa.training.domain.locker;
 
-import com.inflearn.springdatajpa.domain.member.Member;
-import com.inflearn.springdatajpa.training.domain.member.MemberTest;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import org.hibernate.jpa.internal.util.PersistenceUtilHelper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 class LockerRepository2Test {
@@ -16,36 +13,14 @@ class LockerRepository2Test {
     private LockerRepository2 lockerRepository;
 
     @Test
+    @Transactional
     void findById() {
-        // given
-        MemberTest memberTest = new MemberTest();
-        Locker locker = new Locker(memberTest);
-        Locker save = lockerRepository.save(locker);
-
         // when
-        Locker result = lockerRepository.findById(save.getId())
+        Locker result = lockerRepository.findById(1L)
                 .orElseThrow();
 
         // then
+        System.out.println(PersistenceUtilHelper.isLoaded(result.getMemberTest()));
         System.out.println(result.getMemberTest());
-    }
-
-    @Test
-    void findByIdIn() {
-        // given
-        MemberTest member1 = new MemberTest();
-        MemberTest member2 = new MemberTest();
-        Locker locker = new Locker(member1);
-        Locker save = lockerRepository.save(locker);
-        Locker locker2 = new Locker(member2);
-        Locker save2 = lockerRepository.save(locker2);
-
-        // when
-        List<Locker> lockers = lockerRepository.findByIdIn(Arrays.asList(save.getId(), save2.getId()));
-
-        // then
-        for (Locker locker1 : lockers) {
-            System.out.println(locker1.getMemberTest());
-        }
     }
 }

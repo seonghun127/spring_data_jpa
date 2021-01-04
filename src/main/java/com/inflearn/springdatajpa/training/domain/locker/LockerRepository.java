@@ -1,5 +1,6 @@
 package com.inflearn.springdatajpa.training.domain.locker;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
@@ -19,9 +20,14 @@ public class LockerRepository {
         return em.find(Locker.class, id);
     }
 
-    public Locker findWithJpql(Long id) {
+    public Locker findById(Long id) {
         return em.createQuery("select l from Locker l where l.id = :id", Locker.class)
                 .setParameter("id", id)
                 .getSingleResult();
+    }
+
+    public List<Locker> findAll() {
+        return em.createQuery("select l from Locker l", Locker.class)
+                .getResultList();
     }
 }

@@ -1,7 +1,7 @@
 package com.inflearn.springdatajpa.training.domain;
 
 import com.inflearn.springdatajpa.training.domain.locker.Locker;
-import com.inflearn.springdatajpa.training.domain.member.service.MemberTestFacadeService;
+import com.inflearn.springdatajpa.training.domain.membertest1.service.MemberTestFacadeService;
 import com.inflearn.springdatajpa.training.domain.team.Team;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

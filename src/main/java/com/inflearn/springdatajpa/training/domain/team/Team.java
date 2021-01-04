@@ -1,6 +1,6 @@
 package com.inflearn.springdatajpa.training.domain.team;
 
-import com.inflearn.springdatajpa.training.domain.member.MemberTest;
+import com.inflearn.springdatajpa.training.domain.membertest1.MemberTest;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;

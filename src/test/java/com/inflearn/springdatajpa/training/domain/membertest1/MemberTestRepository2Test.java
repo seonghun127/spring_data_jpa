@@ -1,4 +1,4 @@
-package com.inflearn.springdatajpa.training.domain.member;
+package com.inflearn.springdatajpa.training.domain.membertest1;
 
 import com.inflearn.springdatajpa.training.domain.locker.Locker;
 import java.util.Arrays;

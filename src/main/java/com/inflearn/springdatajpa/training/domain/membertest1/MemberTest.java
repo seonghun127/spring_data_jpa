@@ -1,4 +1,4 @@
-package com.inflearn.springdatajpa.training.domain.member;
+package com.inflearn.springdatajpa.training.domain.membertest1;
 
 import com.inflearn.springdatajpa.training.domain.locker.Locker;
 import com.inflearn.springdatajpa.training.domain.team.Team;
@@ -10,12 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.BatchSize;
 
 @Table(name = "MEMBER_TEST")
 @Entity

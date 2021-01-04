@@ -1,9 +1,9 @@
-package com.inflearn.springdatajpa.training.domain.member.service;
+package com.inflearn.springdatajpa.training.domain.membertest1.service;
 
 import com.inflearn.springdatajpa.training.domain.locker.Locker;
 import com.inflearn.springdatajpa.training.domain.locker.LockerRepository;
-import com.inflearn.springdatajpa.training.domain.member.MemberTest;
-import com.inflearn.springdatajpa.training.domain.member.MemberTestRepository;
+import com.inflearn.springdatajpa.training.domain.membertest1.MemberTest;
+import com.inflearn.springdatajpa.training.domain.membertest1.MemberTestRepository;
 import com.inflearn.springdatajpa.training.domain.team.Team;
 import com.inflearn.springdatajpa.training.domain.team.TeamRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -34,12 +34,12 @@ public class MemberTestFacadeService {
                 .username("memberA")
                 .build();
 
-        final Locker locker = Locker.builder()
-                .member(member)
-                .build();
+//        final Locker locker = Locker.builder()
+//                .member(member)
+//                .build();
 
         Long savedMemberId = memberTestRepository.save(member);
-        Long savedLockerId = lockerRepository.save(locker);
+//        Long savedLockerId = lockerRepository.save(locker);
         Long savedTeamId = teamRepository.save(team);
 
         member.joinTeam(team);
