@@ -4,8 +4,11 @@ import com.inflearn.springdatajpa.domain.member.Member;
 import com.inflearn.springdatajpa.service.MemberService;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +36,14 @@ public class MemberApiController {
         return new CreateMemberResponse(id);
     }
 
+    @PutMapping("/api/v1/members/{id}")
+    public UpdateMemberResponse updateMemberV1(@PathVariable Long id,
+                                               @RequestBody @Valid UpdateMemberRequest request) {
+        memberService.update(id, request.getUsername());
+        Member member = memberService.findOne(id);
+        return new UpdateMemberResponse(member.getId(), member.getUsername());
+    }
+
     @Data
     static class CreateMemberRequest {
         @NotEmpty
@@ -46,5 +57,18 @@ public class MemberApiController {
         public CreateMemberResponse(Long id) {
             this.id = id;
         }
+    }
+
+    @Data
+    static class UpdateMemberRequest {
+        @NotEmpty
+        private String username;
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class UpdateMemberResponse {
+        private Long id;
+        private String username;
     }
 }
