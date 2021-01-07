@@ -1,5 +1,6 @@
 package com.inflearn.springdatajpa.domain.delivery;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inflearn.springdatajpa.domain.common.vo.Address;
 import com.inflearn.springdatajpa.domain.delivery.vo.DeliveryStatus;
 import com.inflearn.springdatajpa.domain.order.Order;
@@ -26,6 +27,7 @@ public class Delivery {
     @Column(name = "delivery_id")
     private Long id;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private Order order;
 

@@ -1,5 +1,6 @@
 package com.inflearn.springdatajpa.domain.member;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inflearn.springdatajpa.domain.common.vo.Address;
 import com.inflearn.springdatajpa.domain.order.Order;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class Member {
     @Embedded
     private Address address;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
