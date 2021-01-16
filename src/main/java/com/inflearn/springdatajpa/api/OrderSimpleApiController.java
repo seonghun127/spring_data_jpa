@@ -1,10 +1,14 @@
 package com.inflearn.springdatajpa.api;
 
+import com.inflearn.springdatajpa.domain.common.vo.Address;
 import com.inflearn.springdatajpa.domain.order.Order;
 import com.inflearn.springdatajpa.domain.order.OrderRepository;
 import com.inflearn.springdatajpa.domain.order.dto.OrderSearch;
 import com.inflearn.springdatajpa.domain.order.vo.OrderStatus;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
+import lombok.Data;
 import org.hibernate.Hibernate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,5 +47,29 @@ public class OrderSimpleApiController {
         });
 
         return orders;
+    }
+
+    @GetMapping("/api/v2/simple-orders")
+    public List<SimpleOrderDto> ordersV2() {
+        return orderRepository.findAll(new OrderSearch("userA", OrderStatus.ORDER)).stream()
+                .map(SimpleOrderDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Data
+    static class SimpleOrderDto {
+        private Long orderId;
+        private String name;
+        private LocalDateTime orderDate;
+        private OrderStatus orderStatus;
+        private Address address;
+
+        public SimpleOrderDto(Order order) {
+            orderId = order.getId();
+            name = order.getMember().getUsername(); // LAZY
+            orderDate = order.getOrderDate();
+            orderStatus = order.getStatus();
+            address = order.getDelivery().getAddress(); // LAZY
+        }
     }
 }
