@@ -3,8 +3,9 @@ package com.inflearn.springdatajpa.api;
 import com.inflearn.springdatajpa.domain.order.Order;
 import com.inflearn.springdatajpa.domain.order.OrderRepository;
 import com.inflearn.springdatajpa.domain.order.dto.OrderSearch;
+import com.inflearn.springdatajpa.domain.order.dto.SimpleOrderDto;
+import com.inflearn.springdatajpa.domain.order.simplequery.OrderSimpleQueryRepository;
 import com.inflearn.springdatajpa.domain.order.vo.OrderStatus;
-import com.inflearn.springdatajpa.dto.SimpleOrderDto;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.hibernate.Hibernate;
@@ -21,9 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderSimpleApiController {
 
     private final OrderRepository orderRepository;
+    private final OrderSimpleQueryRepository orderSImpleQueryRepository;
 
-    public OrderSimpleApiController(OrderRepository orderRepository) {
+    public OrderSimpleApiController(OrderRepository orderRepository, OrderSimpleQueryRepository orderSImpleQueryRepository) {
         this.orderRepository = orderRepository;
+        this.orderSImpleQueryRepository = orderSImpleQueryRepository;
     }
 
     /**
@@ -63,6 +66,6 @@ public class OrderSimpleApiController {
 
     @GetMapping("/api/v4/simple-orders")
     public List<SimpleOrderDto> ordersV4() {
-        return orderRepository.findOrderDtos();
+        return orderSImpleQueryRepository.findOrderDtos();
     }
 }

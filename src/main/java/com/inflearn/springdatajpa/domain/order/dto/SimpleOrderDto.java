@@ -1,4 +1,4 @@
-package com.inflearn.springdatajpa.dto;
+package com.inflearn.springdatajpa.domain.order.dto;
 
 import com.inflearn.springdatajpa.domain.common.vo.Address;
 import com.inflearn.springdatajpa.domain.order.Order;
