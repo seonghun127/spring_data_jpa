@@ -1,5 +1,6 @@
 package com.inflearn.springdatajpa.domain.order;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inflearn.springdatajpa.domain.delivery.Delivery;
 import com.inflearn.springdatajpa.domain.delivery.vo.DeliveryStatus;
 import com.inflearn.springdatajpa.domain.member.Member;
@@ -39,13 +40,16 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;

@@ -1,5 +1,6 @@
 package com.inflearn.springdatajpa.domain.orderitem;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inflearn.springdatajpa.domain.item.Item;
 import com.inflearn.springdatajpa.domain.order.Order;
 import javax.persistence.Column;
@@ -26,10 +27,12 @@ public class OrderItem {
     @Column(name = "order_item_id")
     private Long id;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
