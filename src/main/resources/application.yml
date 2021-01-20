@@ -12,9 +12,10 @@ spring:
       hibernate:
 #        show-sql: true
         format_sql: true
+        # 연관관계 엔티티(다대일, 일대다)를 지연 로딩 시, N+1 쿼리 문제를 해결하기 위해 in 절 조회 최대 사이즈 값 설정
+        default_batch_fetch_size: 100
         jdbc:
           batch_size: 10
-#        default_batch_fetch_size: 100
 
 logging:
   level:
