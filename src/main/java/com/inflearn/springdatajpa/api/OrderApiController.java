@@ -3,7 +3,9 @@ package com.inflearn.springdatajpa.api;
 import com.inflearn.springdatajpa.domain.common.vo.Address;
 import com.inflearn.springdatajpa.domain.order.Order;
 import com.inflearn.springdatajpa.domain.order.OrderRepository;
+import com.inflearn.springdatajpa.domain.order.dto.OrderQueryDto;
 import com.inflearn.springdatajpa.domain.order.dto.OrderSearch;
+import com.inflearn.springdatajpa.domain.order.query.OrderQueryRepository;
 import com.inflearn.springdatajpa.domain.order.vo.OrderStatus;
 import com.inflearn.springdatajpa.domain.orderitem.OrderItem;
 import java.time.LocalDateTime;
@@ -18,9 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderApiController {
 
     private final OrderRepository orderRepository;
+    private final OrderQueryRepository orderQueryRepository;
 
-    public OrderApiController(OrderRepository orderRepository) {
+    public OrderApiController(OrderRepository orderRepository, OrderQueryRepository orderQueryRepository) {
         this.orderRepository = orderRepository;
+        this.orderQueryRepository = orderQueryRepository;
     }
 
     /**
@@ -67,6 +71,11 @@ public class OrderApiController {
         return orderRepository.findAllWithMemberDelivery(offset, limit).stream()
                 .map(OrderDto::new)
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping({"/api/v4/orders"})
+    public List<OrderQueryDto> ordersV4_page() {
+        return orderQueryRepository.findOrderQueryDto();
     }
 
     @Data
