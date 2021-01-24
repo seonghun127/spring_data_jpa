@@ -3,6 +3,7 @@ package com.inflearn.springdatajpa.api;
 import com.inflearn.springdatajpa.domain.common.vo.Address;
 import com.inflearn.springdatajpa.domain.order.Order;
 import com.inflearn.springdatajpa.domain.order.OrderRepository;
+import com.inflearn.springdatajpa.domain.order.dto.OrderFlatDto;
 import com.inflearn.springdatajpa.domain.order.dto.OrderQueryDto;
 import com.inflearn.springdatajpa.domain.order.dto.OrderSearch;
 import com.inflearn.springdatajpa.domain.order.query.OrderQueryRepository;
@@ -81,6 +82,21 @@ public class OrderApiController {
     @GetMapping("/api/v5/orders")
     public List<OrderQueryDto> ordersV5() {
         return orderQueryRepository.finAllByDto_optimization();
+    }
+
+    /**
+     * 데이터를 플랫하게 필요한 모든 테이블을 조인해서 한번에 가져온다. (쿼리 발생은 1번)
+     * 일대다 조인이 포함되어있기 때문에 데이터 뻥튀기가 발생 -> 중복을 제거하는 로직 필요
+     * DB 통신은 오로지 1번만 발생하되, 메모리에 플랫한 데이터를 모두 올려서 응답 payload에 맞게 가공하는 작업이 필요하다.
+     * 응답 payload가 복잡하다면 가공하는 로직도 복잡해질 수 있다.
+     * 데이터 뻥튀기가 발생(일대다 조인 + DTO 반환)하기 때문에 페이징 처리가 불가하하다.
+     * 중복을 제거하고 데이터를 가공하는 작업은 pass
+     * 쿼리는 1번만 발생하는 장점이 있지만 V5 API가 더 좋다고 생각한다. 이와 같은 방식은 현업에서도 사용하지 않을 듯 싶다.
+     * @return
+     */
+    @GetMapping("/api/v6/orders")
+    public List<OrderFlatDto> ordersV6() {
+        return orderQueryRepository.findAllByDto_flat();
     }
 
     @Data

@@ -1,5 +1,6 @@
 package com.inflearn.springdatajpa.domain.order.query;
 
+import com.inflearn.springdatajpa.domain.order.dto.OrderFlatDto;
 import com.inflearn.springdatajpa.domain.order.dto.OrderItemQueryDto;
 import com.inflearn.springdatajpa.domain.order.dto.OrderQueryDto;
 import java.util.List;
@@ -70,6 +71,16 @@ public class OrderQueryRepository {
                 " from Order o" +
                 " join o.member m" +
                 " join o.delivery d", OrderQueryDto.class)
+                .getResultList();
+    }
+
+    public List<OrderFlatDto> findAllByDto_flat() {
+        return em.createQuery("select new com.inflearn.springdatajpa.domain.order.dto.OrderFlatDto(o.id, m.username, o.orderDate, o.status, d.address, i.name, oi.orderPrice, oi.count)" +
+                " from Order o" +
+                " join o.member m" +
+                " join o.delivery d" +
+                " join o.orderItems oi" +
+                " join oi.item i", OrderFlatDto.class)
                 .getResultList();
     }
 }
