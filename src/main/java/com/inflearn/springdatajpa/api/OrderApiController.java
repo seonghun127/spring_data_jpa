@@ -34,7 +34,7 @@ public class OrderApiController {
      *
      * @return
      */
-    @GetMapping({"/api/v1/orders"})
+    @GetMapping("/api/v1/orders")
     public List<Order> ordersV1() {
         List<Order> orders = orderRepository.findAll(new OrderSearch());
 
@@ -49,21 +49,21 @@ public class OrderApiController {
         return orders;
     }
 
-    @GetMapping({"/api/v2/orders"})
+    @GetMapping("/api/v2/orders")
     public List<OrderDto> ordersV2() {
         return orderRepository.findAll(new OrderSearch()).stream()
                 .map(OrderDto::new)
                 .collect(Collectors.toList());
     }
 
-    @GetMapping({"/api/v3/orders"})
+    @GetMapping("/api/v3/orders")
     public List<OrderDto> ordersV3() {
         return orderRepository.findAllWithItem().stream()
                 .map(OrderDto::new)
                 .collect(Collectors.toList());
     }
 
-    @GetMapping({"/api/v3.1/orders"})
+    @GetMapping("/api/v3.1/orders")
     public List<OrderDto> ordersV3_page(
             @RequestParam(name = "offset", defaultValue = "0") int offset,
             @RequestParam(name = "limit", defaultValue = "100") int limit
@@ -73,9 +73,14 @@ public class OrderApiController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping({"/api/v4/orders"})
-    public List<OrderQueryDto> ordersV4_page() {
+    @GetMapping("/api/v4/orders")
+    public List<OrderQueryDto> ordersV4() {
         return orderQueryRepository.findOrderQueryDto();
+    }
+
+    @GetMapping("/api/v5/orders")
+    public List<OrderQueryDto> ordersV5() {
+        return orderQueryRepository.finAllByDto_optimization();
     }
 
     @Data
