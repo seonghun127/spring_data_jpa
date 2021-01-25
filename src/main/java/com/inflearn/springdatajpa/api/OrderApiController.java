@@ -41,8 +41,8 @@ public class OrderApiController {
 
         // 강제 연관관계 엔티티 즉시 로딩
         for (Order order : orders) {
-            final String username = order.getMember().getUsername();
-            final Address address = order.getDelivery().getAddress();
+            order.getMember().getUsername();
+            order.getDelivery().getAddress();
             List<OrderItem> orderItems = order.getOrderItems();
             orderItems.forEach(orderItem -> orderItem.getItem().getName());
         }
