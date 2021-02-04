@@ -19,7 +19,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString
+@ToString(of = {"id", "name"})
 public class Team {
 
     @Id
