@@ -1,10 +1,20 @@
 package com.inflearn.springdatajpa.config;
 
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
+@EnableJpaRepositories(basePackages = {
+        "com.inflearn.springdatajpa.스프링JPA활용12",
+        "com.inflearn.springdatajpa.스프링데이터JPA실전"
+})
+@EntityScan(basePackages = {
+        "com.inflearn.springdatajpa.스프링JPA활용12",
+        "com.inflearn.springdatajpa.스프링데이터JPA실전"
+})
 public class BeanConfig {
 
     /**

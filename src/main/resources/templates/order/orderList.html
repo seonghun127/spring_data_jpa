@@ -12,7 +12,7 @@
             <div class="form-group mx-sm-1 mb-2">
                 <select th:field="*{orderStatus}" class="form-control"> <option value="">주문상태</option>
                     <option th:each=
-                                    "status : ${T(com.inflearn.springdatajpa.domain.order.vo.OrderStatus).values()}"
+                                    "status : ${T(com.inflearn.springdatajpa.스프링JPA활용12.domain.order.vo.OrderStatus).values()}"
                             th:value="${status}"
                             th:text="${status}">option
                     </option>
